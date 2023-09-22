@@ -7,7 +7,7 @@
 
 Soal: 
 
-### *User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya adalah mengunggah suatu file.*
+### _User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya adalah mengunggah suatu file._
 
 karena yang diminta adalah aktifitas mengunggah, maka command ftp yang digunakan adalah STOR
 
@@ -22,7 +22,7 @@ ftp contains "STOR"
 
 Pada ncat yang diberikan terdapat beberapa sub soal:
 
-### *a. Berapakah sequence number (raw) pada packet yang menunjukkan aktivitas tersebut?*
+### _a. Berapakah sequence number (raw) pada packet yang menunjukkan aktivitas tersebut?_
 
 * Dapat ditemukan pada bagian `Transmission Control Protocol`
     ```
@@ -31,7 +31,7 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
 
 ![1_a](src/1a.png)
 
-### *b. Berapakah acknowledge number (raw) pada packet yang menunjukkan aktivitas tersebut?*
+### _b. Berapakah acknowledge number (raw) pada packet yang menunjukkan aktivitas tersebut?_
 
 * Dapat ditemukan pada bagian `Transmission Control Protocol`
     ```
@@ -40,7 +40,7 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
 
 ![1_b](src/1b.png)
 
-### *c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?*
+### _c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?_
 
 * Dengan menggunakan `follow tcp stream`, kita akan diarahkan ke paket respons secara langsung
 * Kemudian, seq number raw dapat ditemukan pada bagian `Transmission Control Protocol`
@@ -50,7 +50,7 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
 
 ![1_c](src/1c.png)
 
-### *d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?*
+### _d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?_
 
 * Dapat ditemukan pada bagian `Transmission Control Protocol`
     ```
@@ -67,7 +67,7 @@ Setelah semua subsoal telah dijawab maka flag akan diberikan.
 
 Soal:
 
-### *Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!*
+### _Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!_
 
 Karena ip dari web praktikum diketahui maka dapat di cari menggunakan filter berikut:
 ```
@@ -88,7 +88,7 @@ Soal:
 
 Diberikan netcat, didalamnya ada 2 subsoal
 
-### *a. Berapa banyak paket yang tercapture dengan IP source maupun destination address adalah 239.255.255.250 dengan port 3702?*
+### _a. Berapa banyak paket yang tercapture dengan IP source maupun destination address adalah 239.255.255.250 dengan port 3702?_
 
 * Dapat menggunakan filter berikut:
     ```
@@ -101,7 +101,7 @@ Diberikan netcat, didalamnya ada 2 subsoal
 
     > Dapat menggunakan fungsi statistic dari wireshark dengan menuju tab statistic -> ipv4 Statistics -> destination and ports
 
-### *b. Protokol layer transport apa yang digunakan?*
+### _b. Protokol layer transport apa yang digunakan?_
 
 * Dapat dilihat secara langsung maupun dari analitics bahwa protocol yang menggunakan port 3702 pada ip 239.255.255.250 adalah 
     ```
@@ -116,7 +116,7 @@ Setelah menjawab kedua subsoal diatas flag akan diberikan
 
 ## 4
 
-### *Berapa nilai checksum yang didapat dari header pada paket nomor 130?*
+### _Berapa nilai checksum yang didapat dari header pada paket nomor 130?_
 
 Untuk menuju paket tertentu dapat menggunakan hotkeys `ctrl + g` dan masukkan 130
 
@@ -142,7 +142,7 @@ Soal:
 
 Soal:
 
-### *Seorang anak bernama Udin Berteman dengan SlameT yang merupakan seorang penggemar film detektif. sebagai teman yang baik, Ia selalu mengajak slamet untuk bermain valoranT bersama. suatu malam, terjadi sebuah hal yang tak terdUga. ketika udin mereka membuka game tersebut, laptop udin menunjukkan sebuah field text dan Sebuah kode Invalid bertuliskan "server SOURCE ADDRESS 7812 is invalid". ketika ditelusuri di google, hasil pencarian hanya menampilkan a1 e5 u21. jiwa detektif slamet pun bergejolak. bantulah udin dan slamet untuk menemukan solusi kode error tersebut.*
+### _Seorang anak bernama Udin Berteman dengan SlameT yang merupakan seorang penggemar film detektif. sebagai teman yang baik, Ia selalu mengajak slamet untuk bermain valoranT bersama. suatu malam, terjadi sebuah hal yang tak terdUga. ketika udin mereka membuka game tersebut, laptop udin menunjukkan sebuah field text dan Sebuah kode Invalid bertuliskan "server SOURCE ADDRESS 7812 is invalid". ketika ditelusuri di google, hasil pencarian hanya menampilkan a1 e5 u21. jiwa detektif slamet pun bergejolak. bantulah udin dan slamet untuk menemukan solusi kode error tersebut._
 
 * "a1 e5 u21" dapat diartikan substitution cypher dimana tiap huruf diganti menjadi representasi angkanya sesuai urutan alfabet, ataupun sebaliknya.
 
@@ -163,7 +163,7 @@ Masukkan hasil yang didapat (huruf balok tanpa spasi) kedalam netcat yang diberi
 
 ## 7
 Soal:
-### *Berapa jumlah packet yang menuju IP 184.87.193.88?*
+### _Berapa jumlah packet yang menuju IP 184.87.193.88?_
 
 Dapat menggunakan filter berikut:
 ```
@@ -182,7 +182,7 @@ Jumlah paket dapat dilihat pada bagian bawah window wireshark
 
 Soal:
 
-### *Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yang menuju port 80! (Jika terdapat lebih dari 1 port, maka urutkan sesuai dengan abjad)*
+### _Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yang menuju port 80! (Jika terdapat lebih dari 1 port, maka urutkan sesuai dengan abjad)_
 
 * Filter port tcp dengan menggunakan filter berikut:
     ```
@@ -210,7 +210,7 @@ masukkab kedalam netcat yang ada pada soal dan flag akan ditemukan
 
 Soal: 
 
-### *Berikan kueri filter sehingga wireshark hanya mengambil paket yang berasal dari alamat 10.51.40.1 tetapi tidak menuju ke alamat 10.39.55.34!*
+### _Berikan kueri filter sehingga wireshark hanya mengambil paket yang berasal dari alamat 10.51.40.1 tetapi tidak menuju ke alamat 10.39.55.34!_
 
 * Filter ip 10.51.40.1 menggunakan filter berikut:
     ```
@@ -236,7 +236,7 @@ masukkab kedalam netcat yang ada pada soal dan flag akan ditemukan
 
 Soal:
 
-### *Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet!*
+### _Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet!_
 
 filter paket sehingga hanya menampilkan protokol telnet dengan filter berikut:
 ```
