@@ -16,7 +16,7 @@ Sehingga untuk mencari paket yang menggunakan command STOR gunakan filter beriku
 ftp contains "STOR"
 ```
 
-![filter_stor]()
+![1-stor](src/1-stor.png)
 
 > Kendala yang saya alami adalah menggunakan referensi command clients yang tidak standar (send, put), dan tidak menggunakan raw command yang telah diatur oleh IETF sendiri (STOR)
 
@@ -29,8 +29,6 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
     Sequence Number (raw): 258040667
     ```
 
-![1_a](src/1a.png)
-
 ### _b. Berapakah acknowledge number (raw) pada packet yang menunjukkan aktivitas tersebut?_
 
 * Dapat ditemukan pada bagian `Transmission Control Protocol`
@@ -38,17 +36,16 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
     Acknowledgment number (raw): 1044861039
     ```
 
-![1_b](src/1b.png)
-
 ### _c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?_
 
 * Dengan menggunakan `follow tcp stream`, kita akan diarahkan ke paket respons secara langsung
+
+![1-response](src/1-response.png)
+
 * Kemudian, seq number raw dapat ditemukan pada bagian `Transmission Control Protocol`
     ```
     Sequence Number (raw): 1044861039
     ```
-
-![1_c](src/1c.png)
 
 ### _d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?_
 
@@ -56,8 +53,6 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
     ```
     Acknowledgment number (raw): 258040696
     ```
-
-![1_d](src/1d.png)
 
 Setelah semua subsoal telah dijawab maka flag akan diberikan.
 
@@ -77,6 +72,8 @@ ip.addr == 10.21.78.111 && http contains "Praktikum"
 pilih paket yang berisi `200 ok` yang artinya request berhasil,
 
 pada bagian `Hypertext Transfer Protocol` terdapat field `Server` dengan value nama dari web server yang digunakan
+
+![2](src/2.png)
 
 value tersebut dapat dimasukkan kedalam netcat pada soal dan akan didapatkan flag
 
@@ -132,10 +129,49 @@ Masukkan value checksum pada netcat pada soal dan akan didapatkan flagnya
 
 Diberikan file pcap dan protected zip
 
-password dari file zip dapat ditemukan menggunakan 
+password dari file zip dapat ditemukan pada file pcap dengan melakukan follow pada salah satu paket
 
-Soal:
+![5-follow](src/5-follow.png)
 
+Di dalam conversation tersebut didapatkan password yang terenkripsi beserta instruksi dekripsi nya.
+
+Decrypt password menggunakan base64
+
+![5-decrypt](src/5-decrypt.png)
+
+Gunakan password yang didapatkan untuk membuka file zip.
+
+Dalam file zip terdapat txt file berisi netcat
+
+![5-netcat](src/5-netcat.png)
+
+Masuk kedalam netcat tersebut dan akan muncul beberapa subsoal
+
+### _a. Berapa banyak packet yang berhasil di capture dari file pcap tersebut?_
+
+* Jumlah paket dapat dilihat pada bagian bawah window wireshark
+
+![5a](src/5a.png)
+
+### _b. Port berapakah pada server yang digunakan untuk service SMTP?_
+
+* SMTP standar nya menggunakan port 25
+
+### _c. Dari semua alamat IP yang tercapture, IP berapakah yang merupakan public IP?_
+
+Gunakan fitur statistics wireshark untuk melihat daftar ip yang tertangkap
+
+![5c](src/5c.png)
+
+* 192.168.x.x merupakan ip private yang dibagikan oleh server dhcp pada router konvensional
+
+* 10.10.x.x merupakan ip private yang dimiliki oleh jarikan ITS
+
+* Dengan mempertimbangkan 2 poin diatas, maka ip yang tersisa adalah 74.53.140.153
+
+Setelah menjawab semua subsoal, flag akan diberikan
+
+![flag_5](src/flag_5.png)
 
 
 ## 6 (REVISI)
@@ -147,6 +183,8 @@ Soal:
 * "a1 e5 u21" dapat diartikan substitution cypher dimana tiap huruf diganti menjadi representasi angkanya sesuai urutan alfabet, ataupun sebaliknya.
 
 * "SOURCE ADDRESS 7812" dapat diartikan bahwa source ip dari paket nomor 7812 perlu diperhatikan
+
+![6](src/6.png)
 
 Dari kedua petunjuk diatas dapat disimpulkan bahwa kita perlu melakukan substitusi terhadap source ip dari paket nomor 7812
 
@@ -200,8 +238,6 @@ Gabungkan kedua filter tersebut menggunakan operrand or
 tcp.dstport == 80 || udp.dstport == 80
 ```
 
-![8](src/8.png)
-
 masukkab kedalam netcat yang ada pada soal dan flag akan ditemukan
 
 ![flag_8](src/flag_8.png)
@@ -250,11 +286,13 @@ untuk mendapatkan aktifitas login user telnet dapat menggunakan filter berikut:
 telnet contains "Login"
 ```
 
-kemudian lakukan follow tcp stream dan filter sehingga hanya menampilkan dialog server
+![10-filter](src/10-filter.png)
+
+kemudian lakukan follow tcp stream dan filter sehingga hanya menampilkan dialog client
 
 akan didapatkan username dan password pada baris awal stream
 
-![10](src/10.png)
+![10-follow](src/10-follow.png)
 
 Masukkan credential yang didapatkan kedalam netcat pada soal sesuai format yang tertera, setelah itu akan diberikan flagnya
 
