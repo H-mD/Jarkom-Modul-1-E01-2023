@@ -38,7 +38,7 @@ Pada ncat yang diberikan terdapat beberapa sub soal:
 
 ### _c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?_
 
-* Dengan menggunakan `follow tcp stream`, kita akan diarahkan ke paket respons secara langsung
+* lakukan `follow tcp stream`, kemudian pilih paket response tepat setelah paket STOR
 
 ![1-response](src/1-response.png)
 
